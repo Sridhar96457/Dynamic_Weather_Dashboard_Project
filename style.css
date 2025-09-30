@@ -1,0 +1,18 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(120deg, #89f7fe, #66a6ff);
+  margin: 0; padding: 0;
+  display: flex; justify-content: center; align-items: center;
+  min-height: 100vh; color: #333;
+}
+.app {
+  background: #fff; padding: 20px; border-radius: 12px;
+  max-width: 400px; width: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.search-box { margin-bottom: 20px; }
+input { padding: 10px; border-radius: 6px; border: 1px solid #ccc; width: 60%; }
+button { padding: 10px; margin-left: 5px; border: none; border-radius: 6px; cursor: pointer; }
+.weather { margin-top: 15px; }
+.forecast { margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; }
+.forecast-day { background: #f4f4f4; padding: 10px; border-radius: 8px; }
