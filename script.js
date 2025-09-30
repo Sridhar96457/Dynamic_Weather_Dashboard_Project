@@ -1,14 +1,13 @@
-const apiKey = "560f102633b77a6e03d83cd95f311a54"; // Your API key
+const apiKey = "560f102633b77a6e03d83cd95f311a54"; 
 const weatherDiv = document.getElementById("weather");
 const forecastDiv = document.getElementById("forecast");
 
-// Search by city
+
 document.getElementById("searchBtn").addEventListener("click", () => {
   const city = document.getElementById("cityInput").value.trim();
   if (city) fetchWeather(city);
 });
 
-// Search by location
 document.getElementById("locBtn").addEventListener("click", () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -25,13 +24,12 @@ document.getElementById("locBtn").addEventListener("click", () => {
   }
 });
 
-// Fetch weather by city
 async function fetchWeather(city) {
   try {
     const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
     const data = await res.json();
 
-    if (data.cod !== 200) {  // handle API errors
+    if (data.cod !== 200) {  
       displayWeather(data);
       return;
     }
@@ -44,7 +42,6 @@ async function fetchWeather(city) {
   }
 }
 
-// Fetch weather by coordinates
 async function fetchWeatherByCoords(lat, lon) {
   try {
     const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
@@ -63,7 +60,6 @@ async function fetchWeatherByCoords(lat, lon) {
   }
 }
 
-// Fetch 5-day forecast
 async function fetchForecast(lat, lon) {
   try {
     const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
@@ -81,7 +77,6 @@ async function fetchForecast(lat, lon) {
   }
 }
 
-// Display current weather
 function displayWeather(data) {
   if (data.cod !== 200) {
     weatherDiv.innerHTML = `<p>${data.message || "City not found ❌"}</p>`;
@@ -95,7 +90,6 @@ function displayWeather(data) {
   `;
 }
 
-// Display 5-day forecast
 function displayForecast(data) {
   forecastDiv.innerHTML = "";
   const daily = {};
@@ -115,3 +109,4 @@ function displayForecast(data) {
     `;
   });
 }
+
